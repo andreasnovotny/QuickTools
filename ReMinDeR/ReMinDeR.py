@@ -3,14 +3,16 @@
 ##########################################################################################################
 ############### ReMinDeR ::Rmarkdown - Rscript converter #################################################
 ##########################################################################################################
-
+#
 # Andreas Novotny, 2018-02-07
 # andreas.novotny@su.se
-
+#
 ##########################################################################################################
-
+#
 # Usage is bash:
 # python3 ReMinDeR.py Rmd_file R_file input_format=Rmd
+#
+##########################################################################################################
 
 def Rmd_to_R (file_Rmd, file_R):
 	Alternator = 0
@@ -22,19 +24,19 @@ def Rmd_to_R (file_Rmd, file_R):
 					Alternator = 1
 					Counter += 1
 					output_file.write("\n")
-					
+
 				else:
 					output_file.write(''.join(['# ', row]))
-				
+
 				continue
-			
+
 			if Alternator == 1:
 				if row.startswith("```"):
 					Alternator = 0
-				
+
 				else:
 					output_file.write(row)
-	
+
 	print("Combined", Counter, "R-code chunks in", file_R)
 
 
@@ -47,7 +49,7 @@ def R_to_Rmd (file_R, file_Rmd):
 				if row.startswith('#'):
 					output_file.write(row.lstrip('#'))
 					continue
-				
+
 				if row.startswith(' ') or row.startswith('\n'):
 					output_file.write(row)
 					continue
@@ -73,7 +75,7 @@ def ReMinDeR (file_Rmd, file_R, input_format = 'Rmd'):
 	print (input_format)
 	if input_format == 'Rmd':
 		Rmd_to_R(file_Rmd, file_R)
-	
+
 	if input_format == 'R':
 		R_to_Rmd(file_R, file_Rmd)
 
