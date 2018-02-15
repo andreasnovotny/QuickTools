@@ -21,10 +21,13 @@ Written for python3
 
 Converts a CSV file containing a list of sequences (as obtained by the get.sequences() in dada2),
 and converts it to a handy FASTA format, where the sequence is its own name:
->ATGTGTAAA
+
+  \>ATGTGTAAA
+
 ATGTAAAA
 
->ATGTGCAAA
+\>ATGTGCAAA
+
 ATGCAAAA
 
 ect...
